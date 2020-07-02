@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_one"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="뷰 생성" />
+    <item
+        android:id="@+id/bottom_two"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="뷰 삭제" />
+    <item
+        android:id="@+id/bottom_three"
+        android:icon="@android:drawable/ic_dialog_info"
+
+        android:title="투명도" />
+</menu>

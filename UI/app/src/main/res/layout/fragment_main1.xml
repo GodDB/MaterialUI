@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/guideIV"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@drawable/book"
+            android:scaleType="fitXY"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideIV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLeft"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideRight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main1Recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/guideIV"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/main1_chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/charts"
+            app:layout_constraintLeft_toLeftOf="@id/guideLeft"
+            app:layout_constraintTop_toBottomOf="@id/main1Recycle"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:id="@+id/main1_chart_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/more"
+            app:layout_constraintTop_toBottomOf="@id/main1Recycle"
+            app:layout_constraintRight_toRightOf="@id/guideRight"
+            android:textSize="17sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main1_chart_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/guideLeft"
+            app:layout_constraintTop_toBottomOf="@id/main1_chart"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/main1_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/charts"
+            app:layout_constraintLeft_toLeftOf="@id/guideLeft"
+            app:layout_constraintTop_toBottomOf="@id/main1_chart_recycler"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:id="@+id/main1_author_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/more"
+            app:layout_constraintTop_toBottomOf="@id/main1_chart_recycler"
+            app:layout_constraintRight_toRightOf="@id/guideRight"
+            android:textSize="17sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main1_author_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/guideLeft"
+            app:layout_constraintTop_toBottomOf="@id/main1_author"
+            android:layout_marginTop="10dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -16,7 +16,6 @@ class MainTabPagerAdapter(fm : FragmentManager, private val pageCount:Int) : Fra
             0 -> Main1Fragment()
             1 -> Main2Fragment()
             else -> Main3Fragment()
-
         }
     }
 

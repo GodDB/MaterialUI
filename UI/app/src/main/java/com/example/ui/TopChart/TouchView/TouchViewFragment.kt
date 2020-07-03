@@ -1,6 +1,7 @@
 package com.example.ui.TopChart.TouchView
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
@@ -12,7 +13,7 @@ import kotlin.math.atan
 import kotlin.math.atan2
 
 
-class TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetector.OnScaleGestureListener, SeekBar.OnSeekBarChangeListener {
+object TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetector.OnScaleGestureListener, SeekBar.OnSeekBarChangeListener {
 
     //첫 x, y값 (뷰 drag)
     private var pressX : Float = 0f
@@ -25,7 +26,9 @@ class TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetector
     private var pressDegree : Float = 0f
     private var pressViewDegree : Float = 0f
 
+    //터치 뷰
     private lateinit var touchView : View
+    //투명도 조절 바
     private lateinit var transparentBar : SeekBar
     private lateinit var scaleGestureDetector: ScaleGestureDetector
 
@@ -37,8 +40,11 @@ class TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetector
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_touchview, container, false).apply {
             setOnTouchListener{ _, event ->
+                //손가락이 두개 일 경우에 작동
                 if(event.pointerCount ==2){
+                    // zoom
                     scaleGestureDetector.onTouchEvent(event)
+                    // rotation
                     rotationView(event)
                 }
                 true
@@ -46,15 +52,19 @@ class TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetector
         }
 
         scaleGestureDetector = ScaleGestureDetector(activity, this)
+        //투명도 조절 바
         transparentBar = view.findViewById<SeekBar>(R.id.transParentBar).apply { setOnSeekBarChangeListener(this@TouchViewFragment) }
 
         view.findViewById<BottomNavigationView>(R.id.bottomView).setOnNavigationItemSelectedListener {
             when(it.itemId){
-                //뷰 생성
+                //터치 뷰 생성
                 R.id.bottom_one -> {
-                    val touchView= createView()
+     /*               val touchView= createView()
                     (view as ViewGroup).addView(touchView)
-                    touchView.setOnTouchListener(this)
+                    touchView.setOnTouchListener(this)*/
+                    val intent : Intent = Intent(activity, GalleryImageAcitivity::class.java)
+                    startActivity(intent)
+
                     true
                 }
 
@@ -96,9 +106,10 @@ class TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetector
         return true
     }
 
+    /** 뷰 회전  **/
     private fun rotationView(event : MotionEvent){
         when(event.actionMasked){
-            //처음 눌렀을 때
+            //처음 눌렀을 때 두 손가락의 각도값, 뷰의 각도값
             MotionEvent.ACTION_POINTER_DOWN -> {
                 //x,y변위값
                 val pressDeltaX = event.getX(0) - event.getX(1)
@@ -106,10 +117,12 @@ class TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetector
                 //아크탄젠트로 각도 계산
                 val radian = atan2(pressDeltaY, pressDeltaX).toDouble()
                 pressDegree = Math.toDegrees(radian).toFloat()
+
                 //touchView 각도 저장
                 pressViewDegree = touchView.rotation
             }
 
+            //움직였을 때 두 손가락의 각도값 및 뷰 각도 갱신
             MotionEvent.ACTION_MOVE -> {
                 // x,y 변위값
                 val deltaX = event.getX(0) - event.getX(1)
@@ -118,24 +131,28 @@ class TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetector
                 val radian = atan2(deltaY, deltaX).toDouble()
                 val moveDegree = Math.toDegrees(radian).toFloat()
 
+                //뷰에 각도 적용 ( 처음 뷰 각도 + 무브 각도 - 처음 눌렀을때 각도)
                 touchView.rotation = (pressViewDegree + moveDegree - pressDegree)
             }
         }
     }
 
+    /** 터치 뷰 생성 **/
     private fun createView() : ImageView{
         return ImageView(activity).apply {
             layoutParams = ViewGroup.LayoutParams(200, 200)
-            setImageResource(R.color.black)}
+            setImageResource(R.drawable.book_iv)}
     }
 
+    /** onScaleGestureListener handler **/
     override fun onScale(detector: ScaleGestureDetector): Boolean {
-        scaleFactor *= detector.scaleFactor
+        scaleFactor *= detector.scaleFactor // cur_displacement / pre_displacement
         touchView.scaleX = scaleFactor
         touchView.scaleY = scaleFactor
         return true
     }
 
+    /** onSeekbarChangeListener handler **/
     override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
         touchView.alpha = p1.toFloat()/100
     }

@@ -15,7 +15,6 @@ class TopChartActivity : AppCompatActivity() {
     lateinit var mTabLayout : TabLayout
     lateinit var mViewPager : ViewPager
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_topchart)
@@ -46,6 +45,7 @@ class TopChartActivity : AppCompatActivity() {
             override fun onTabReselected(p0: TabLayout.Tab?) {}
             override fun onTabUnselected(p0: TabLayout.Tab?) {}
         })
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

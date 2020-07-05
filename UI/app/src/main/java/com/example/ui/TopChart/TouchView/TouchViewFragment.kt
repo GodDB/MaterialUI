@@ -1,19 +1,25 @@
 package com.example.ui.TopChart.TouchView
 
 import android.annotation.SuppressLint
+import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.content.Intent.ACTION_PICK
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 import android.view.*
 import android.widget.ImageView
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import com.example.ui.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlin.math.atan
+import java.io.InputStream
 import kotlin.math.atan2
 
 
-object TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetector.OnScaleGestureListener, SeekBar.OnSeekBarChangeListener {
+class TouchViewFragment() : Fragment(), View.OnTouchListener, ScaleGestureDetector.OnScaleGestureListener, SeekBar.OnSeekBarChangeListener {
 
     //첫 x, y값 (뷰 drag)
     private var pressX : Float = 0f
@@ -59,11 +65,10 @@ object TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetecto
             when(it.itemId){
                 //터치 뷰 생성
                 R.id.bottom_one -> {
-     /*               val touchView= createView()
-                    (view as ViewGroup).addView(touchView)
-                    touchView.setOnTouchListener(this)*/
-                    val intent : Intent = Intent(activity, GalleryImageAcitivity::class.java)
-                    startActivity(intent)
+                    val intent = Intent(ACTION_PICK);
+                    intent.data = EXTERNAL_CONTENT_URI;
+                    intent.type = "image/*";
+                    startActivityForResult(intent, 1)
 
                     true
                 }
@@ -81,6 +86,7 @@ object TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetecto
                 }
             }
         }
+
         return view
     }
 
@@ -138,11 +144,17 @@ object TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetecto
     }
 
     /** 터치 뷰 생성 **/
-    private fun createView() : ImageView{
-        return ImageView(activity).apply {
-            layoutParams = ViewGroup.LayoutParams(200, 200)
-            setImageResource(R.drawable.book_iv)}
+    private fun createView(img : Uri?){
+        val bitmap =MediaStore.Images.Media.getBitmap(context?.contentResolver, img)
+
+        touchView = ImageView(activity).apply {
+            layoutParams = ViewGroup.LayoutParams(400, 400)
+            setImageBitmap(bitmap)}
+        (view as ViewGroup).addView(touchView)
+        touchView.setOnTouchListener(this)
     }
+
+
 
     /** onScaleGestureListener handler **/
     override fun onScale(detector: ScaleGestureDetector): Boolean {
@@ -157,7 +169,12 @@ object TouchViewFragment : Fragment(), View.OnTouchListener, ScaleGestureDetecto
         touchView.alpha = p1.toFloat()/100
     }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            createView(data?.data)
+        }
+    }
 
     // not using
     override fun onStartTrackingTouch(p0: SeekBar?) {}

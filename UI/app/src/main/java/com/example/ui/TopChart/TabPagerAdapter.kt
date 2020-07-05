@@ -16,7 +16,7 @@ class TabPagerAdapter(fm : FragmentManager, private val pageCount:Int) : Fragmen
         return when(position){
             0 -> PicksFragment()
             1 -> TopPaidFragment()
-            else -> TouchViewFragment
+            else -> TouchViewFragment()
 
         }
     }

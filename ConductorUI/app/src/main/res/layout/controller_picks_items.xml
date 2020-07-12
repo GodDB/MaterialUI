@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/picks_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:outlineAmbientShadowColor="@color/black"
+        android:outlineSpotShadowColor="@color/black"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="10dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/picks_iv"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:src="@drawable/sunset"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:scaleType="fitXY"
+                />
+
+            <TextView
+                android:id="@+id/picks_bookNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="20 Books"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/picks_iv"
+                app:layout_constraintLeft_toLeftOf="@id/guideLeft1" />
+
+            <TextView
+                android:id="@+id/picks_follower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="244 Followers"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/picks_iv"
+                app:layout_constraintLeft_toRightOf="@id/picks_bookNum" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Best New City Guides"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@id/picks_bookNum"
+                app:layout_constraintLeft_toLeftOf="@id/guideLeft1" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/picks_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/picks_iv"
+                android:visibility="gone"
+                >
+
+            <TextView
+                android:id="@+id/picks_num1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                app:layout_constraintLeft_toLeftOf="@id/guideLeft"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/guideOne"/>
+
+            <ImageView
+                android:id="@+id/picks_iv1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/book_iv"
+                android:layout_marginStart="10dp"
+                app:layout_constraintLeft_toRightOf="@id/picks_num1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/guideOne"
+                 />
+
+            <TextView
+                android:id="@+id/picks_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/picks_iv1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/picks_subtitle1"
+                android:layout_marginStart="10dp"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                app:layout_constraintVertical_chainStyle="packed" />
+            <TextView
+                android:id="@+id/picks_subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/picks_iv1"
+                app:layout_constraintTop_toBottomOf="@id/picks_title1"
+                app:layout_constraintBottom_toBottomOf="@id/guideOne"
+                android:layout_marginStart="10dp"
+                />
+            <TextView
+                android:id="@+id/picks_author1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@id/picks_subtitle1"
+                app:layout_constraintLeft_toRightOf="@id/picks_subtitle1"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                />
+
+
+
+
+            <TextView
+                android:id="@+id/picks_num2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                app:layout_constraintLeft_toLeftOf="@id/guideLeft"
+                app:layout_constraintTop_toBottomOf="@id/guideOne"
+                app:layout_constraintBottom_toBottomOf="@id/guideTwo"
+                tools:ignore="NotSibling" />
+            <ImageView
+                android:id="@+id/picks_iv2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/book_iv"
+                android:layout_marginStart="10dp"
+                app:layout_constraintLeft_toRightOf="@id/picks_num2"
+                app:layout_constraintTop_toBottomOf="@id/guideOne"
+                app:layout_constraintBottom_toTopOf="@id/guideTwo"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/picks_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/picks_iv2"
+                app:layout_constraintTop_toBottomOf="@id/guideOne"
+                app:layout_constraintBottom_toTopOf="@id/picks_subtitle2"
+                android:layout_marginStart="10dp"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                app:layout_constraintVertical_chainStyle="packed"/>
+
+            <TextView
+                android:id="@+id/picks_subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/picks_iv2"
+                app:layout_constraintTop_toBottomOf="@id/picks_title2"
+                app:layout_constraintBottom_toBottomOf="@id/guideTwo"
+                android:layout_marginStart="10dp"/>
+            <TextView
+                android:id="@+id/picks_author2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@id/picks_subtitle2"
+                app:layout_constraintLeft_toRightOf="@id/picks_subtitle2"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                />
+
+
+
+
+            <TextView
+                android:id="@+id/picks_num3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                app:layout_constraintLeft_toLeftOf="@id/guideLeft"
+                app:layout_constraintTop_toBottomOf="@id/guideTwo"
+                app:layout_constraintBottom_toBottomOf="@id/guideThree" />
+
+            <ImageView
+                android:id="@+id/picks_iv3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/book_iv"
+                android:layout_marginStart="10dp"
+                app:layout_constraintLeft_toRightOf="@id/picks_num3"
+                app:layout_constraintTop_toBottomOf="@id/guideTwo"
+                app:layout_constraintBottom_toTopOf="@id/guideThree"
+                />
+
+            <TextView
+                android:id="@+id/picks_title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/picks_iv3"
+                app:layout_constraintTop_toBottomOf="@id/guideTwo"
+                app:layout_constraintBottom_toTopOf="@id/picks_subtitle3"
+                android:layout_marginStart="10dp"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/picks_subtitle3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/picks_iv3"
+                app:layout_constraintTop_toBottomOf="@id/picks_title3"
+                app:layout_constraintBottom_toBottomOf="@id/guideThree"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/picks_author3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@id/picks_subtitle3"
+                app:layout_constraintLeft_toRightOf="@id/picks_subtitle3"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.33"
+                    />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.66"
+                    />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.99"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideLeft1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/picks_cardView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:outlineAmbientShadowColor="@color/black"
+        android:outlineSpotShadowColor="@color/black"
+        app:cardCornerRadius="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+        <TextView
+            android:id="@+id/picks_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/showall"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            />
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
